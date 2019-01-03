@@ -4,12 +4,18 @@
   
     
     <entry>
-      <title>hello world</title>
-      <link href="/2019/01/02/hello-world/"/>
-      <url>/2019/01/02/hello-world/</url>
+      <title>Hello World</title>
+      <link href="/2019/01/03/Hello-World/"/>
+      <url>/2019/01/03/Hello-World/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>算是第三次搭博客了……这次重新回到<code>Github Pages</code>，并换上了<code>Hexo</code>。</p><p><del>希望这次不要再弃坑了吧</del></p><p>周末就把之前的文章搬运过来。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 日常 </category>
+          
+      </categories>
       
       
     </entry>

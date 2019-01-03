@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.tfx2001.pw/"/>
-  <updated>2019-01-02T15:34:57.819Z</updated>
+  <updated>2019-01-03T05:43:50.627Z</updated>
   <id>https://github.tfx2001.pw/</id>
   
   <author>
@@ -17,15 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>hello world</title>
-    <link href="https://github.tfx2001.pw/2019/01/02/hello-world/"/>
-    <id>https://github.tfx2001.pw/2019/01/02/hello-world/</id>
-    <published>2019-01-02T15:34:57.000Z</published>
-    <updated>2019-01-02T15:34:57.819Z</updated>
+    <title>Hello World</title>
+    <link href="https://github.tfx2001.pw/2019/01/03/Hello-World/"/>
+    <id>https://github.tfx2001.pw/2019/01/03/Hello-World/</id>
+    <published>2019-01-03T00:42:23.000Z</published>
+    <updated>2019-01-03T05:43:50.627Z</updated>
+    
+    <content type="html"><![CDATA[<p>算是第三次搭博客了……这次重新回到<code>Github Pages</code>，并换上了<code>Hexo</code>。</p><p><del>希望这次不要再弃坑了吧</del></p><p>周末就把之前的文章搬运过来。</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;算是第三次搭博客了……这次重新回到&lt;code&gt;Github Pages&lt;/code&gt;，并换上了&lt;code&gt;Hexo&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;希望这次不要再弃坑了吧&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;周末就把之前的文章搬运过来。&lt;/p&gt;
+
+      
+    
     </summary>
+    
+      <category term="日常" scheme="https://github.tfx2001.pw/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
   </entry>
