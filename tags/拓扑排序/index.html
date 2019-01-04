@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives: 2019/1 | tfx2001&#39;s Blog</title>
+  <title>Tag: 拓扑排序 | tfx2001&#39;s Blog</title>
   <meta name="description" content="tfx2001&#39;s Blog">
   <meta name="keywords" content="Blog,Programe,OI,tfx2001">
   <meta name="HandheldFriendly" content="True">
@@ -16,7 +16,7 @@
 <meta name="keywords" content="Blog,Programe,OI,tfx2001">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tfx2001&#39;s Blog">
-<meta property="og:url" content="https://github.tfx2001.pw/archives/2019/01/index.html">
+<meta property="og:url" content="https://github.tfx2001.pw/tags/拓扑排序/index.html">
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
 <meta property="og:description" content="tfx2001&apos;s Blog">
 <meta property="og:locale" content="zh-CN">
@@ -125,9 +125,8 @@
     <div class='container clearfix'>
       <div class='l_main'>
         
-	
   <script>
-    window.subData= { title:'Year : 2019.1'}
+    window.subData= { title:'Tag : 拓扑排序'}
   </script>
 
 <section class="post-list">
@@ -137,36 +136,49 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2019/01/03/Hello-World-2/">
-        Hello World
+      <a href="/2017/10/06/【UVa-10305】Ordering-Tasks/">
+        【UVa-10305】Ordering Tasks
       </a>
     </h2>
     
     <time>
-      1月 3, 2019
+      10月 6, 2017
     </time>
 		
     
     <div class="cats">
-        <a href="/categories/Daily/">Daily</a>
+        <a href="/categories/OI/">OI</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <p>算是第三次搭博客了……这次重新回到<code>Github Pages</code>，并换上了<code>Hexo</code>。</p>
-<p><del>希望这次不要再弃坑了吧</del></p>
-<p>周末就把之前的文章搬运过来。</p>
+	  <p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1246" target="_blank" rel="noopener">【题目链接】</a></p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定$1\leq n\leq 100$和$m$，表示有$n$个任务，所有任务之间有$m$个关系，接下来$m$行，每行包含两个整数$i$，$j$，表示在进行$j$任务之前必须完成$i$任务。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>把每个任务看成一个点，“前提任务”看成有向边，则得到了一个有向图，我们把这个有向图叫做<strong>AOV网</strong>（顶点活动网，<b>A</b>ctivity <b>O</b>n <b>V</b>ertex  network）。这样，我们的任务实际上就是把图中的所有节点排序，使得每一条有向边$(u,v)$对应的$u$都排在$v$的前面。在图论中，这个问题成为<strong>拓扑排序</strong>。</p>
+<p>不难发现：如果这个图中存在有向环，则不存在拓扑排序，反之则存在。不包含任何有向环的有向图成为<strong>有向无环图</strong>（<b>D</b>irected <b>A</b>cyclic <b>G</b>raph, <b>DAG</b>）。可以借助DFS完成拓扑排序：在完成一个结点后把它加在当前拓扑序的首部。</p>
+<p>为什么是加到首部呢？因为在DFS的时候，假设当前节点为最后一个，即该结点出度为0，那么就可以把它放到拓扑序的首部（序列中只有这一个结点），然后回溯。在回溯的过程中，依次确定结点。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">110</span>;</span><br><span class="line"><span class="keyword">int</span> c[MAXN], G[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> ans[MAXN];</span><br><span class="line"><span class="keyword">int</span> t, n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    c[u] = <span class="number">-1</span>;	<span class="comment">//-1表示正在访问</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= n; v++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (G[u][v])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (c[v] == <span class="number">-1</span>)	<span class="comment">//如果当前节点正在被访问，说明有环</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (!c[v] &amp;&amp; !dfs(v)) <span class="comment">//如果没有被访问过且接下来有环，因为只有出现了环才会return false，这里利用了&amp;&amp;是“短路”运算符的性质</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    c[u] = <span class="number">1</span>;</span><br><span class="line">    ans[--t] = u;	<span class="comment">//把当前结点加在拓扑序的首部</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">toposort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    t = n;</span><br><span class="line">    <span class="keyword">int</span>  i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">if</span> (!c[i] &amp;&amp; !dfs(i))</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &amp;&amp; n + m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(G, <span class="literal">false</span>, <span class="keyword">sizeof</span>(G));</span><br><span class="line">        <span class="built_in">memset</span>(c, <span class="number">0</span>, <span class="keyword">sizeof</span>(c));</span><br><span class="line">        <span class="keyword">int</span> i, a, b;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">            G[a][b] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (toposort())</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; ans[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans[n - <span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] 刘汝佳. 算法竞赛入门经典.第2版[M]. 清华大学出版社, 2014.</p>
 
 
     
     
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/UVa/">UVa</a>
+      
+        <a href="/tags/图论/">图论</a>
+      
+        <a href="/tags/拓扑排序/">拓扑排序</a>
+      
+	  </div>
     
   </section>
 </article>
     </div>
   
 </section>
-
 
 
       </div>

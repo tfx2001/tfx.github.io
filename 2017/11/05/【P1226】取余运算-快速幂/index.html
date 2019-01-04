@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>About | tfx2001&#39;s Blog</title>
+  <title>【P1226】取余运算||快速幂 | tfx2001&#39;s Blog</title>
   <meta name="description" content="tfx2001&#39;s Blog">
   <meta name="keywords" content="Blog,Programe,OI,tfx2001">
   <meta name="HandheldFriendly" content="True">
@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="tfx2001's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个技术宅。">
-<meta name="keywords" content="Blog,Programe,OI,tfx2001">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About">
-<meta property="og:url" content="https://github.tfx2001.pw/about/index.html">
+  <meta name="description" content="【题目链接】 题目大意输出$\large b^p \space mod \space k$的值。 分析直接朴素算法，边乘边取余，时间复杂度为$O(n)$，数据一大就会TLE…… 我们可以采用倍增的思想，对$b$进行二进制分解，如果前面听不懂也没关系，下面结合具体数字进行讲解。 例如，$3^{11}=177147$，如果我们用朴素算法的话需要做$10$次乘法。$11$的二进制表示为$1011_{(2">
+<meta name="keywords" content="Luogu,快速幂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【P1226】取余运算||快速幂">
+<meta property="og:url" content="https://github.tfx2001.pw/2017/11/05/【P1226】取余运算-快速幂/index.html">
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
-<meta property="og:description" content="一个技术宅。">
+<meta property="og:description" content="【题目链接】 题目大意输出$\large b^p \space mod \space k$的值。 分析直接朴素算法，边乘边取余，时间复杂度为$O(n)$，数据一大就会TLE…… 我们可以采用倍增的思想，对$b$进行二进制分解，如果前面听不懂也没关系，下面结合具体数字进行讲解。 例如，$3^{11}=177147$，如果我们用朴素算法的话需要做$10$次乘法。$11$的二进制表示为$1011_{(2">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T08:48:55.925Z">
+<meta property="og:updated_time" content="2019-01-04T15:49:02.798Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="一个技术宅。">
+<meta name="twitter:title" content="【P1226】取余运算||快速幂">
+<meta name="twitter:description" content="【题目链接】 题目大意输出$\large b^p \space mod \space k$的值。 分析直接朴素算法，边乘边取余，时间复杂度为$O(n)$，数据一大就会TLE…… 我们可以采用倍增的思想，对$b$进行二进制分解，如果前面听不懂也没关系，下面结合具体数字进行讲解。 例如，$3^{11}=177147$，如果我们用朴素算法的话需要做$10$次乘法。$11$的二进制表示为$1011_{(2">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -125,35 +125,67 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="page-" class="post white-box article-type-page" itemscope="" itemprop="blogPost">
+        <article id="posts-【P1226】取余运算-快速幂" class="post white-box article-type-posts" itemscope="" itemprop="blogPost">
 	<section class="meta">
 	<h2 class="title">
-  	<a href="/about/index.html">
-    	About
+  	<a href="/2017/11/05/【P1226】取余运算-快速幂/">
+    	【P1226】取余运算||快速幂
     </a>
   </h2>
 	<time>
-	  1月 4, 2019
+	  11月 5, 2017
 	</time>
 	
+    
+    <div class="cats">
+        <a href="/categories/OI/">OI</a>
+    </div>
+
 	</section>
 	
-		<section class="toc-wrapper"></section>
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意"><span class="toc-number">1.</span> <span class="toc-text">题目大意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol></section>
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<p>一个技术宅。</p>
+    	<p><a href="https://www.luogu.org/problemnew/show/1226" target="_blank" rel="noopener">【题目链接】</a></p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>输出$\large b^p \space mod \space k$的值。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>直接朴素算法，边乘边取余，时间复杂度为$O(n)$，数据一大就会TLE……</p>
+<p>我们可以采用<strong>倍增</strong>的思想，对$b$进行二进制分解，如果前面听不懂也没关系，下面结合具体数字进行讲解。</p>
+<p>例如，$3^{11}=177147$，如果我们用朴素算法的话需要做$10$次乘法。<br>$11$的二进制表示为$1011_{(2)}$，所以\[\large 3^{11}=3^{2^3+2^1+2^0}=3^{2^{3}} \times 3^{2^{1}} \times 3^{2^{0}}\]最终我们只需要做$3$次乘法，时间复杂度降为$O(log \space n)$。</p>
+<p>代码如下。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> b, p, k;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">poww</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> mod)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>, base = a;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">            ans = (ans * base) % mod;</span><br><span class="line">        base *= base; <span class="comment">//base一开始是a，那么接下来会变成a^(2^1)，a^(2^2)，a^(2^3)……</span></span><br><span class="line">        base %= mod;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; b &gt;&gt; p &gt;&gt; k;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d^%d mod %d=%d\n"</span>, b, p, k, poww(b, p, k));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   	</div>
 	  
+	  <div class="article-tags tags">
+      
+        <a href="/tags/Luogu/">Luogu</a>
+      
+        <a href="/tags/快速幂/">快速幂</a>
+      
+	  </div>
+    
 		
+	
+		<div class="art-item-footer">
+				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/11/08/【模板】读入输出优化/" rel="prev" title="【模板】读入输出优化">
+						【模板】读入输出优化 
+					</a></span>
+				
+				
+					<span class="art-item-right">next：<a href="/2017/11/01/【UVa-11354】Bond/" rel="next" title="【UVa-11354】Bond">
+						【UVa-11354】Bond
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
 	
 	</section>
 	
 </article>
 <script>
 	window.subData = {
-		title: 'About',
+		title: '【P1226】取余运算||快速幂',
 		tools: true
 	}
 </script>
