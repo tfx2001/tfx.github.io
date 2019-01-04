@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="tfx2001's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="【题目链接】 十一月的第一篇post，本来昨天已经看完倍增了，但后面又去做了一些题巩固一下，今天写一篇post理一下思路。 题目描述有$n$座城市通过$m$条双向道路相连，每一条道路都有一个危险系数。你的任务是回答若干个询问。每个询问包含一个起点$s$和一个终点$t$，要求找一条从$s$到$t$的路，使得途径的所有道路的最大危险系数最小。 分析既然要危险系数最小（先不考虑最大），我们可以先对这个图">
+  <meta name="description" content="【题目链接】 十一月的第一篇post，本来昨天已经看完倍增了，但后面又去做了一些题巩固一下，今天写一篇post理一下思路。 题目描述有$n$座城市通过$m$条双向道路相连，每一条道路都有一个危险系数。你的任务是回答若干个询问。每个询问包含一个起点$s$和一个终点$t$，要求找一条从$s$到$t$的路，使得途径的所有道路的最大危险系数最小。">
 <meta name="keywords" content="UVa,倍增,最近公共祖先，LCA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【UVa-11354】Bond">
 <meta property="og:url" content="https://github.tfx2001.pw/2017/11/01/【UVa-11354】Bond/index.html">
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
-<meta property="og:description" content="【题目链接】 十一月的第一篇post，本来昨天已经看完倍增了，但后面又去做了一些题巩固一下，今天写一篇post理一下思路。 题目描述有$n$座城市通过$m$条双向道路相连，每一条道路都有一个危险系数。你的任务是回答若干个询问。每个询问包含一个起点$s$和一个终点$t$，要求找一条从$s$到$t$的路，使得途径的所有道路的最大危险系数最小。 分析既然要危险系数最小（先不考虑最大），我们可以先对这个图">
+<meta property="og:description" content="【题目链接】 十一月的第一篇post，本来昨天已经看完倍增了，但后面又去做了一些题巩固一下，今天写一篇post理一下思路。 题目描述有$n$座城市通过$m$条双向道路相连，每一条道路都有一个危险系数。你的任务是回答若干个询问。每个询问包含一个起点$s$和一个终点$t$，要求找一条从$s$到$t$的路，使得途径的所有道路的最大危险系数最小。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T15:50:40.038Z">
+<meta property="og:updated_time" content="2019-01-04T17:07:26.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【UVa-11354】Bond">
-<meta name="twitter:description" content="【题目链接】 十一月的第一篇post，本来昨天已经看完倍增了，但后面又去做了一些题巩固一下，今天写一篇post理一下思路。 题目描述有$n$座城市通过$m$条双向道路相连，每一条道路都有一个危险系数。你的任务是回答若干个询问。每个询问包含一个起点$s$和一个终点$t$，要求找一条从$s$到$t$的路，使得途径的所有道路的最大危险系数最小。 分析既然要危险系数最小（先不考虑最大），我们可以先对这个图">
+<meta name="twitter:description" content="【题目链接】 十一月的第一篇post，本来昨天已经看完倍增了，但后面又去做了一些题巩固一下，今天写一篇post理一下思路。 题目描述有$n$座城市通过$m$条双向道路相连，每一条道路都有一个危险系数。你的任务是回答若干个询问。每个询问包含一个起点$s$和一个终点$t$，要求找一条从$s$到$t$的路，使得途径的所有道路的最大危险系数最小。">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -150,6 +150,7 @@
     	<p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2339" target="_blank" rel="noopener">【题目链接】</a></p>
 <p>十一月的第一篇post，本来昨天已经看完倍增了，但后面又去做了一些题巩固一下，今天写一篇post理一下思路。</p>
 <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>有$n$座城市通过$m$条<strong>双向道路</strong>相连，每一条道路都有一个危险系数。你的任务是回答若干个询问。每个询问包含一个起点$s$和一个终点$t$，要求找一条从$s$到$t$的路，使得途径的所有道路的最大危险系数最小。</p>
+<a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>既然要危险系数最小（先不考虑最大），我们可以先对这个图进行预处理，求出这个图的最小生成树。因为树上两点之间的路径是唯一的，且这条路径肯定会经过这两个点的<strong>最近公共祖先</strong>，<strong>LCA（<b>L</b>east <b>C</b>ommon <b>A</b>ncestor）</strong>，找到这条路径之后就可以统计这条路径上危险系数最大的道路了。那么，怎么求LCA呢？</p>
 <p><b>我们可以打暴力！</b>采用暴力爬链的方式，先要确保两点处于同一深度（如果不在同一深度就把比较深的那个点“提”上来），然后两个点同时一层一层地往上爬，直到两个点相遇，相遇的那个点就是两个点的LCA。这种方法虽然简单，容易理解，但是时间复杂度为$O(n)$……数据一大就很容易超时.</p>
 <p><b>我们可以想优化！</b>这里可以用一种叫做<strong>倍增</strong>的思想来加速。</p>

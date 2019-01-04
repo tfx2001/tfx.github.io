@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="tfx2001's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="【题目链接】 题目大意乔治一开始有一堆同样长的小木棍，然后他把这些木棍随意砍成几段，直到每段的长都不超过50。 现在，他想把小木棍拼接成原来的样子，但是却忘记了自己开始时有多少根木棍和它们的长度。 输出原始木棍的最小可能长度。 分析这是一道搜索题，但是数据范围有点大，需要剪枝，本蒟蒻用到的剪枝如下：  先去掉所有长度$&amp;gt;50$的木棍，然后降序排序，这是为了实现后面的剪枝。  计所有木棍的总长">
+  <meta name="description" content="【题目链接】 题目大意乔治一开始有一堆同样长的小木棍，然后他把这些木棍随意砍成几段，直到每段的长都不超过50。 现在，他想把小木棍拼接成原来的样子，但是却忘记了自己开始时有多少根木棍和它们的长度。 输出原始木棍的最小可能长度。">
 <meta name="keywords" content="Luogu,枚举,搜索,剪枝">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【P1120】小木棍［数据加强版］">
 <meta property="og:url" content="https://github.tfx2001.pw/2017/10/30/【P1120】小木棍［数据加强版］/index.html">
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
-<meta property="og:description" content="【题目链接】 题目大意乔治一开始有一堆同样长的小木棍，然后他把这些木棍随意砍成几段，直到每段的长都不超过50。 现在，他想把小木棍拼接成原来的样子，但是却忘记了自己开始时有多少根木棍和它们的长度。 输出原始木棍的最小可能长度。 分析这是一道搜索题，但是数据范围有点大，需要剪枝，本蒟蒻用到的剪枝如下：  先去掉所有长度$&amp;gt;50$的木棍，然后降序排序，这是为了实现后面的剪枝。  计所有木棍的总长">
+<meta property="og:description" content="【题目链接】 题目大意乔治一开始有一堆同样长的小木棍，然后他把这些木棍随意砍成几段，直到每段的长都不超过50。 现在，他想把小木棍拼接成原来的样子，但是却忘记了自己开始时有多少根木棍和它们的长度。 输出原始木棍的最小可能长度。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T16:00:03.629Z">
+<meta property="og:updated_time" content="2019-01-04T17:08:00.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【P1120】小木棍［数据加强版］">
-<meta name="twitter:description" content="【题目链接】 题目大意乔治一开始有一堆同样长的小木棍，然后他把这些木棍随意砍成几段，直到每段的长都不超过50。 现在，他想把小木棍拼接成原来的样子，但是却忘记了自己开始时有多少根木棍和它们的长度。 输出原始木棍的最小可能长度。 分析这是一道搜索题，但是数据范围有点大，需要剪枝，本蒟蒻用到的剪枝如下：  先去掉所有长度$&amp;gt;50$的木棍，然后降序排序，这是为了实现后面的剪枝。  计所有木棍的总长">
+<meta name="twitter:description" content="【题目链接】 题目大意乔治一开始有一堆同样长的小木棍，然后他把这些木棍随意砍成几段，直到每段的长都不超过50。 现在，他想把小木棍拼接成原来的样子，但是却忘记了自己开始时有多少根木棍和它们的长度。 输出原始木棍的最小可能长度。">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -151,6 +151,7 @@
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>乔治一开始有一堆<strong>同样长</strong>的小木棍，然后他把这些木棍随意砍成几段，直到每段的长都不超过50。</p>
 <p>现在，他想把小木棍拼接成原来的样子，但是却忘记了自己开始时有多少根木棍和它们的长度。</p>
 <p>输出原始木棍的最小可能长度。</p>
+<a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这是一道搜索题，但是数据范围有点大，需要剪枝，本蒟蒻用到的剪枝如下：</p>
 <ol>
 <li><p>先去掉所有长度$&gt;50$的木棍，然后<strong>降序排序</strong>，这是为了实现后面的剪枝。</p>

@@ -154,13 +154,11 @@
   <section class="article typo">
 	  <p><a href="https://www.luogu.org/problemnew/show/1226" target="_blank" rel="noopener">【题目链接】</a></p>
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>输出$\large b^p \space mod \space k$的值。</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>直接朴素算法，边乘边取余，时间复杂度为$O(n)$，数据一大就会TLE……</p>
-<p>我们可以采用<strong>倍增</strong>的思想，对$b$进行二进制分解，如果前面听不懂也没关系，下面结合具体数字进行讲解。</p>
-<p>例如，$3^{11}=177147$，如果我们用朴素算法的话需要做$10$次乘法。<br>$11$的二进制表示为$1011_{(2)}$，所以\[\large 3^{11}=3^{2^3+2^1+2^0}=3^{2^{3}} \times 3^{2^{1}} \times 3^{2^{0}}\]最终我们只需要做$3$次乘法，时间复杂度降为$O(log \space n)$。</p>
-<p>代码如下。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> b, p, k;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">poww</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> mod)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>, base = a;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">            ans = (ans * base) % mod;</span><br><span class="line">        base *= base; <span class="comment">//base一开始是a，那么接下来会变成a^(2^1)，a^(2^2)，a^(2^3)……</span></span><br><span class="line">        base %= mod;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; b &gt;&gt; p &gt;&gt; k;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d^%d mod %d=%d\n"</span>, b, p, k, poww(b, p, k));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/11/05/【P1226】取余运算-快速幂/">Read More</a>
+    </div>
     
     
     

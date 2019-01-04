@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="tfx2001's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="【题目链接】 题目大意有$n$个仓库，每个仓库有$x_{i}$个货物，第$i$个仓库与第$i+1$个仓库之间的距离为$d_{i}$。储物点$i$的东西要运到储物点$j$，代价为$x \times dist\left( i,j\right)$，其中$dist\left( i,j\right)$为仓库$i$和$j$之间的距离。 分析直接上正解吧，首先求出每个仓库的位置$x_{i}$。对于每次询问，我们">
+  <meta name="description" content="【题目链接】 题目大意有$n$个仓库，每个仓库有$x_{i}$个货物，第$i$个仓库与第$i+1$个仓库之间的距离为$d_{i}$。储物点$i$的东西要运到储物点$j$，代价为$x \times dist\left( i,j\right)$，其中$dist\left( i,j\right)$为仓库$i$和$j$之间的距离。">
 <meta name="keywords" content="Luohu,前缀和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【洛谷10月月赛R2·浴谷八连测R3 -Chtholly-】T1 浮游大陆的68号岛">
 <meta property="og:url" content="https://github.tfx2001.pw/2017/10/21/【洛谷10月月赛R2·浴谷八连测R3-Chtholly-】T1-浮游大陆的68号岛/index.html">
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
-<meta property="og:description" content="【题目链接】 题目大意有$n$个仓库，每个仓库有$x_{i}$个货物，第$i$个仓库与第$i+1$个仓库之间的距离为$d_{i}$。储物点$i$的东西要运到储物点$j$，代价为$x \times dist\left( i,j\right)$，其中$dist\left( i,j\right)$为仓库$i$和$j$之间的距离。 分析直接上正解吧，首先求出每个仓库的位置$x_{i}$。对于每次询问，我们">
+<meta property="og:description" content="【题目链接】 题目大意有$n$个仓库，每个仓库有$x_{i}$个货物，第$i$个仓库与第$i+1$个仓库之间的距离为$d_{i}$。储物点$i$的东西要运到储物点$j$，代价为$x \times dist\left( i,j\right)$，其中$dist\left( i,j\right)$为仓库$i$和$j$之间的距离。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T15:46:07.196Z">
+<meta property="og:updated_time" content="2019-01-04T17:07:09.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【洛谷10月月赛R2·浴谷八连测R3 -Chtholly-】T1 浮游大陆的68号岛">
-<meta name="twitter:description" content="【题目链接】 题目大意有$n$个仓库，每个仓库有$x_{i}$个货物，第$i$个仓库与第$i+1$个仓库之间的距离为$d_{i}$。储物点$i$的东西要运到储物点$j$，代价为$x \times dist\left( i,j\right)$，其中$dist\left( i,j\right)$为仓库$i$和$j$之间的距离。 分析直接上正解吧，首先求出每个仓库的位置$x_{i}$。对于每次询问，我们">
+<meta name="twitter:description" content="【题目链接】 题目大意有$n$个仓库，每个仓库有$x_{i}$个货物，第$i$个仓库与第$i+1$个仓库之间的距离为$d_{i}$。储物点$i$的东西要运到储物点$j$，代价为$x \times dist\left( i,j\right)$，其中$dist\left( i,j\right)$为仓库$i$和$j$之间的距离。">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -149,6 +149,7 @@
   	<div class="article-entry" itemprop="articleBody">
     	<p><a href="https://www.luogu.org/problemnew/show/3932" target="_blank" rel="noopener">【题目链接】</a></p>
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有$n$个仓库，每个仓库有$x_{i}$个货物，第$i$个仓库与第$i+1$个仓库之间的距离为$d_{i}$。储物点$i$的东西要运到储物点$j$，代价为$x \times dist\left( i,j\right)$，其中$dist\left( i,j\right)$为仓库$i$和$j$之间的距离。</p>
+<a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>直接上正解吧，首先求出每个仓库的位置$x_{i}$。对于每次询问，我们分成三种情况，分别为：</p>
 <ol>
 <li><p>目标仓库在区间的左边</p>

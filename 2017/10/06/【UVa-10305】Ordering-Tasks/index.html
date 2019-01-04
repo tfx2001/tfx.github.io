@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="tfx2001's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="【题目链接】 题目大意给定$1\leq n\leq 100$和$m$，表示有$n$个任务，所有任务之间有$m$个关系，接下来$m$行，每行包含两个整数$i$，$j$，表示在进行$j$任务之前必须完成$i$任务。 分析把每个任务看成一个点，“前提任务”看成有向边，则得到了一个有向图，我们把这个有向图叫做AOV网（顶点活动网，Activity On Vertex  network）。这样，我们的任务实">
+  <meta name="description" content="【题目链接】 题目大意给定$1\leq n\leq 100$和$m$，表示有$n$个任务，所有任务之间有$m$个关系，接下来$m$行，每行包含两个整数$i$，$j$，表示在进行$j$任务之前必须完成$i$任务。">
 <meta name="keywords" content="UVa,图论,拓扑排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【UVa-10305】Ordering Tasks">
 <meta property="og:url" content="https://github.tfx2001.pw/2017/10/06/【UVa-10305】Ordering-Tasks/index.html">
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
-<meta property="og:description" content="【题目链接】 题目大意给定$1\leq n\leq 100$和$m$，表示有$n$个任务，所有任务之间有$m$个关系，接下来$m$行，每行包含两个整数$i$，$j$，表示在进行$j$任务之前必须完成$i$任务。 分析把每个任务看成一个点，“前提任务”看成有向边，则得到了一个有向图，我们把这个有向图叫做AOV网（顶点活动网，Activity On Vertex  network）。这样，我们的任务实">
+<meta property="og:description" content="【题目链接】 题目大意给定$1\leq n\leq 100$和$m$，表示有$n$个任务，所有任务之间有$m$个关系，接下来$m$行，每行包含两个整数$i$，$j$，表示在进行$j$任务之前必须完成$i$任务。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T15:57:00.593Z">
+<meta property="og:updated_time" content="2019-01-04T17:07:36.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【UVa-10305】Ordering Tasks">
-<meta name="twitter:description" content="【题目链接】 题目大意给定$1\leq n\leq 100$和$m$，表示有$n$个任务，所有任务之间有$m$个关系，接下来$m$行，每行包含两个整数$i$，$j$，表示在进行$j$任务之前必须完成$i$任务。 分析把每个任务看成一个点，“前提任务”看成有向边，则得到了一个有向图，我们把这个有向图叫做AOV网（顶点活动网，Activity On Vertex  network）。这样，我们的任务实">
+<meta name="twitter:description" content="【题目链接】 题目大意给定$1\leq n\leq 100$和$m$，表示有$n$个任务，所有任务之间有$m$个关系，接下来$m$行，每行包含两个整数$i$，$j$，表示在进行$j$任务之前必须完成$i$任务。">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -149,6 +149,7 @@
   	<div class="article-entry" itemprop="articleBody">
     	<p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1246" target="_blank" rel="noopener">【题目链接】</a></p>
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定$1\leq n\leq 100$和$m$，表示有$n$个任务，所有任务之间有$m$个关系，接下来$m$行，每行包含两个整数$i$，$j$，表示在进行$j$任务之前必须完成$i$任务。</p>
+<a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>把每个任务看成一个点，“前提任务”看成有向边，则得到了一个有向图，我们把这个有向图叫做<strong>AOV网</strong>（顶点活动网，<b>A</b>ctivity <b>O</b>n <b>V</b>ertex  network）。这样，我们的任务实际上就是把图中的所有节点排序，使得每一条有向边$(u,v)$对应的$u$都排在$v$的前面。在图论中，这个问题成为<strong>拓扑排序</strong>。</p>
 <p>不难发现：如果这个图中存在有向环，则不存在拓扑排序，反之则存在。不包含任何有向环的有向图成为<strong>有向无环图</strong>（<b>D</b>irected <b>A</b>cyclic <b>G</b>raph, <b>DAG</b>）。可以借助DFS完成拓扑排序：在完成一个结点后把它加在当前拓扑序的首部。</p>
 <p>为什么是加到首部呢？因为在DFS的时候，假设当前节点为最后一个，即该结点出度为0，那么就可以把它放到拓扑序的首部（序列中只有这一个结点），然后回溯。在回溯的过程中，依次确定结点。</p>

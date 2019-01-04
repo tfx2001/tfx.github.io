@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
 <meta property="og:description" content="【题目链接】 题目大意第一行有一个正整数$T$,表示有$T$组测试数据；每组测试数据的第一行有一个正整数$n$，表示有$n$个单词，接下来输入$n$个单词，每个单词最多包含$1000$个小写字母，输入中可以有重复单词。是否可以把这些单词排成一个序列，使得每个单词的第一个字母和上一个单词的最后一个字母相同（例如acm， malform， mouse）。如果可以输出Ordering is possib">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T15:54:30.831Z">
+<meta property="og:updated_time" content="2019-01-04T17:07:45.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【UVa-10129】Play on Words">
 <meta name="twitter:description" content="【题目链接】 题目大意第一行有一个正整数$T$,表示有$T$组测试数据；每组测试数据的第一行有一个正整数$n$，表示有$n$个单词，接下来输入$n$个单词，每个单词最多包含$1000$个小写字母，输入中可以有重复单词。是否可以把这些单词排成一个序列，使得每个单词的第一个字母和上一个单词的最后一个字母相同（例如acm， malform， mouse）。如果可以输出Ordering is possib">
@@ -149,6 +149,7 @@
   	<div class="article-entry" itemprop="articleBody">
     	<p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1070" target="_blank" rel="noopener">【题目链接】</a></p>
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>第一行有一个正整数$T$,表示有$T$组测试数据；每组测试数据的第一行有一个正整数$n$，表示有$n$个单词，接下来输入$n$个单词，每个单词最多包含$1000$个小写字母，输入中可以有重复单词。是否可以把这些单词排成一个序列，使得每个单词的第一个字母和上一个单词的最后一个字母相同（例如acm， malform， mouse）。如果可以输出<strong>Ordering is possible.</strong>，否则输出<strong>The door cannot be opened.</strong>。</p>
+<a id="more"></a>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>先来讲讲有关图论的知识。</p>
 <p>在无向图中，能否从图中的一个结点出发走出一条道路，每边恰好经过一次，这样的路线称为<code>欧拉道路（Eulerian path）</code>，也可以形象地成为“一笔画”。<code>无向图</code>中存在欧拉路径的条件为：<code>图是连通的，且最多只有两个结点的度为奇数（又称奇点）</code>。如果有两个奇点，则必须从其中的一个奇点出发，另一个奇点终止；如果奇点不存在。则可以从任一点出发，最终回到起点（称为<code>欧拉回路</code>）。<code>有向图</code>中，存在欧拉路的条件为：<code>最多只能有两个点的出度不等于入度</code>，而且必须其中一个点的出度比入度大$1$（作为终点），另一个点的入度比出度大$1$（作为起点）。还有一个前提条件：<code>在忽略边的方向后，图必须是连通的</code>。下面是程序，它同时适用于欧拉道路和回路。如果需要打印欧拉道路，在主程序调用时，参数必须是道路的起点。另外，打印的顺序是逆序的，因此在调用这份代码时，应该把<code>printf</code>语句改成一条<code>push</code>语句，把边$(u,v)$压入一个栈内。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">euler</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">0</span>; v &amp;lt; n; v++)</span><br><span class="line">		<span class="keyword">if</span> (G[u][v] &amp;amp;&amp;amp; !vis[u][v]) &#123;</span><br><span class="line">			vis[u][v] = vis[v][u] = <span class="number">1</span>;</span><br><span class="line">			euler(v);</span><br><span class="line">			<span class="built_in">printf</span>(&amp;quot;%d %d\n&amp;quot;, u, v);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
