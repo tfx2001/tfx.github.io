@@ -37,6 +37,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -274,7 +280,7 @@
       
         <tags>
             
-            <tag> Luohu </tag>
+            <tag> Luogu </tag>
             
             <tag> 前缀和 </tag>
             
