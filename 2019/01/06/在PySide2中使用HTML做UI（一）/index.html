@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: 倍增 | tfx2001&#39;s Blog</title>
+  <title>在PySide2中使用HTML做UI（一） | tfx2001&#39;s Blog</title>
   <meta name="description" content="tfx2001&#39;s Blog">
   <meta name="keywords" content="Blog,Programe,OI,tfx2001">
   <meta name="HandheldFriendly" content="True">
@@ -12,17 +12,18 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="tfx2001's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tfx2001&apos;s Blog">
-<meta name="keywords" content="Blog,Programe,OI,tfx2001">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tfx2001&#39;s Blog">
-<meta property="og:url" content="https://github.tfx2001.pw/tags/倍增/index.html">
+  <meta name="description" content="最近笔者一直在思考一个问题：如何快速地写出具有好看UI的Qt程序？经过查阅相关资料发现，大概有两个解决方案：  Qt Quick Qt WebEngine，（类似Electron）">
+<meta name="keywords" content="Python,PySide2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在PySide2中使用HTML做UI（一）">
+<meta property="og:url" content="https://github.tfx2001.pw/2019/01/06/在PySide2中使用HTML做UI（一）/index.html">
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
-<meta property="og:description" content="tfx2001&apos;s Blog">
+<meta property="og:description" content="最近笔者一直在思考一个问题：如何快速地写出具有好看UI的Qt程序？经过查阅相关资料发现，大概有两个解决方案：  Qt Quick Qt WebEngine，（类似Electron）">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-06T14:51:13.606Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tfx2001&#39;s Blog">
-<meta name="twitter:description" content="tfx2001&apos;s Blog">
+<meta name="twitter:title" content="在PySide2中使用HTML做UI（一）">
+<meta name="twitter:description" content="最近笔者一直在思考一个问题：如何快速地写出具有好看UI的Qt程序？经过查阅相关资料发现，大概有两个解决方案：  Qt Quick Qt WebEngine，（类似Electron）">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -124,61 +125,76 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-  <script>
-    window.subData= { title:'Tag : 倍增'}
-  </script>
-
-<section class="post-list">
+        <article id="post-在PySide2中使用HTML做UI（一）" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+	<section class="meta">
+	<h2 class="title">
+  	<a href="/2019/01/06/在PySide2中使用HTML做UI（一）/">
+    	在PySide2中使用HTML做UI（一）
+    </a>
+  </h2>
+	<time>
+	  1月 6, 2019
+	</time>
 	
-    <div class="post-wrapper">
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/11/01/【UVa-11354】Bond/">
-        【UVa-11354】Bond
-      </a>
-    </h2>
-    
-    <time>
-      11月 1, 2017
-    </time>
-		
     
     <div class="cats">
-        <a href="/categories/OI/">OI</a>
+        <a href="/categories/Programming/">Programming</a>
     </div>
 
-  </section>
-  <section class="article typo">
-	  <p><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2339" target="_blank" rel="noopener">【题目链接】</a></p>
-<p>十一月的第一篇post，本来昨天已经看完倍增了，但后面又去做了一些题巩固一下，今天写一篇post理一下思路。</p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>有$n$座城市通过$m$条<strong>双向道路</strong>相连，每一条道路都有一个危险系数。你的任务是回答若干个询问。每个询问包含一个起点$s$和一个终点$t$，要求找一条从$s$到$t$的路，使得途径的所有道路的最大危险系数最小。</p>
+	</section>
+	
+		<section class="toc-wrapper"></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>最近笔者一直在思考一个问题：<strong>如何快速地写出具有好看UI的Qt程序？</strong>经过查阅相关资料发现，大概有两个解决方案：</p>
+<ul>
+<li><code>Qt Quick</code></li>
+<li><code>Qt WebEngine</code>，（类似<code>Electron</code>）</li>
+</ul>
+<a id="more"></a>
+<p>这两个方案该如何选择呢？从性能上考虑，无疑是<code>Qt Quick</code>，但是HTML已经相当成熟，各种前端库层出不穷，开发起来非常方便，作为一个<del>苦逼的</del>个人开发者，我选择HTML。</p>
+<p>目前Qt的官方实现又新加入了Python语言（<code>PySide2</code>，开源协议为<code>LGPLv3</code>非官方的实现是<code>PyQt5</code>，但开源协议为<code>GPLv3</code>），对比C++，Python的优势仍是库多，但运行速度方面远不如C++，不过PySide2的核心代码是用C++实现的，缩小了速度方面的差距。所以做一些小程序的话Python仍是个不错的选择。</p>
+<p>说了那么多，让我们进入正题，先来讲讲PySide2中WebEngine的基本使用方法。</p>
+<p>首先，引入我们需要用到的库，然后创建一个QApplication对象，这是每个Qt应用程序的基础。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PySide2 <span class="keyword">import</span> QtWidgets, QtCore, QtGui, QtWebEngineWidgets</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">app = QtWidgets.QApplication(sys.argv)</span><br></pre></td></tr></table></figure>
+<p>接着创建一个QWebEngineView，用于显示HTML内容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">widget = QtWebEngineWigets.QWebEngineView()</span><br></pre></td></tr></table></figure>
+<p>最后使用<code>load()</code>方法打开指定的网页。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">widget.load(<span class="string">'https://github.tfx2001.pw'</span>)</span><br><span class="line"></span><br><span class="line">sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>别忘了<code>exec_（）</code>。</p>
+<p>基本用法就是这些了，后面的文章中会提到如何调试网页（开发人员工具）以及如何实现HTML与Python的交互。</p>
 
-    
-	  <div class="readmore">
-      <a href="/2017/11/01/【UVa-11354】Bond/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
+  	</div>
+	  
+	  <div class="article-tags tags">
       
-        <a href="/tags/UVa/">UVa</a>
+        <a href="/tags/Python/">Python</a>
       
-        <a href="/tags/倍增/">倍增</a>
-      
-        <a href="/tags/最近公共祖先，LCA/">最近公共祖先，LCA</a>
+        <a href="/tags/PySide2/">PySide2</a>
       
 	  </div>
     
-  </section>
+		
+	
+		<div class="art-item-footer">
+				
+				
+					<span class="art-item-right">next：<a href="/2019/01/03/Hello-World-3/" rel="next" title="Hello World">
+						Hello World
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
+	
+	</section>
+	
 </article>
-    </div>
-  
-</section>
-
+<script>
+	window.subData = {
+		title: '在PySide2中使用HTML做UI（一）',
+		tools: true
+	}
+</script>
 
       </div>
       <aside class='l_side'>
