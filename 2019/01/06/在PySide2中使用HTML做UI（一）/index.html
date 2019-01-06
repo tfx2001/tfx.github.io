@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="tfx2001&#39;s Blog">
 <meta property="og:description" content="最近笔者一直在思考一个问题：如何快速地写出具有好看UI的Qt程序？经过查阅相关资料发现，大概有两个解决方案：  Qt Quick Qt WebEngine，（类似Electron）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-06T23:25:24.733Z">
+<meta property="og:updated_time" content="2019-01-06T23:30:46.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在PySide2中使用HTML做UI（一）">
 <meta name="twitter:description" content="最近笔者一直在思考一个问题：如何快速地写出具有好看UI的Qt程序？经过查阅相关资料发现，大概有两个解决方案：  Qt Quick Qt WebEngine，（类似Electron）">
@@ -161,7 +161,7 @@
 <h1 id="PySide2中WebEngine的基本用法"><a href="#PySide2中WebEngine的基本用法" class="headerlink" title="PySide2中WebEngine的基本用法"></a>PySide2中WebEngine的基本用法</h1><p>首先，引入我们需要用到的库，然后创建一个QApplication对象，这是每个Qt应用程序的基础。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PySide2 <span class="keyword">import</span> QtWidgets, QtCore, QtGui, QtWebEngineWidgets</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">app = QtWidgets.QApplication(sys.argv)</span><br></pre></td></tr></table></figure>
 <p>接着创建一个QWebEngineView，用于显示HTML内容。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">widget = QtWebEngineWigets.QWebEngineView()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">widget = QtWebEngineWidgets.QWebEngineView()</span><br></pre></td></tr></table></figure>
 <p>最后使用<code>load()</code>方法打开指定的网页。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">widget.load(<span class="string">'https://github.tfx2001.pw'</span>)</span><br><span class="line"></span><br><span class="line">sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
 <p>别忘了<code>exec_（）</code>。</p>
